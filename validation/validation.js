@@ -1,23 +1,6 @@
-const {
-  contactsSchema,
-  updateContactSchema,
-} = require("../contactSchema/schema.js");
-
-const validation = (contactsSchema) => {
+const validation = (schema) => {
   return (req, res, next) => {
-    const { error } = contactsSchema.validate(req.body);
-    if (error) {
-      error.status = 400;
-      next(error);
-      return;
-    }
-    next();
-  };
-};
-
-const updateValidation = (updateContactSchema) => {
-  return (req, res, next) => {
-    const { error } = updateContactSchema.validate(req.body);
+    const { error } = schema.validate(req.body);
     if (error) {
       error.status = 400;
       next(error);
@@ -29,5 +12,4 @@ const updateValidation = (updateContactSchema) => {
 
 module.exports = {
   validation,
-  updateValidation,
 };
