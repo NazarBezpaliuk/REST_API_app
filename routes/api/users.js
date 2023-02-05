@@ -1,7 +1,7 @@
 const express = require("express");
 const { auth, validation, ctrlWrapper } = require("../../middlewares/index");
 const { users: ctrl } = require("../../controllers");
-const { subscriptionJoiSchema } = require("../../models/user");
+const { subscriptionJoiSchema } = require("../../models/joiSchema");
 const router = express.Router();
 
 router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
